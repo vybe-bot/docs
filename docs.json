@@ -31,16 +31,12 @@
       {
         "label": "Support",
         "href": "mailto:support@vybebot.com"
-      },
-      {
-        "href": "/x",
-        "label": "Dashboard"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "VybeBot",
+      "href": "https://vybebot.ai"
     }
   },
   "contextual": {
