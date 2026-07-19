@@ -22,12 +22,8 @@
     ]
   },
   "logo": {
-    "light": "/images/vybebot.png",
-    "dark": "/images/VYBEBOT__2_-removebg-preview.png",
-=======
     "light": "/images/vybebot-wordmark.svg",
     "dark": "/images/vybebot-wordmark.svg",
->>>>>>> Stashed changes
     "href": "https://vybebot.ai"
   },
   "navbar": {
