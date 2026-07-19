@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
+  "theme": "mint",
   "name": "Mint Starter Kit",
   "colors": {
     "primary": "#FF8A2A",
