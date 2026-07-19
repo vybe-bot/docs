@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "VybeBot",
   "colors": {
     "primary": "#FF8A2A",
     "light": "#FF8A2A",
@@ -65,5 +65,6 @@
   "appearance": {
     "default": "dark",
     "strict": true
-  }
+  },
+  "description": "AI coding platform for developing discord, telegram, slack and other social platform bots!"
 }
