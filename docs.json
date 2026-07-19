@@ -31,6 +31,10 @@
       {
         "label": "Support",
         "href": "mailto:support@vybebot.com"
+      },
+      {
+        "href": "/x",
+        "label": "Dashboard"
       }
     ],
     "primary": {
