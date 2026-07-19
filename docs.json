@@ -22,8 +22,8 @@
     ]
   },
   "logo": {
-    "light": "/images/vybebot-wordmark.svg",
-    "dark": "/images/vybebot-wordmark.svg",
+    "light": "/images/vybebot-wordmark.png",
+    "dark": "/images/vybebot-wordmark.png",
     "href": "https://vybebot.ai"
   },
   "navbar": {
