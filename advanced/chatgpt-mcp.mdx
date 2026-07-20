@@ -1,0 +1,87 @@
+---
+title: "Use VybeBot from ChatGPT"
+description: "Connect the VybeBot MCP app to ChatGPT and manage projects through OAuth-scoped tools."
+icon: "sparkles"
+---
+
+VybeBot exposes a remote MCP endpoint that lets ChatGPT list workspaces, create projects, run generation, inspect files and diffs, and manage deployments.
+
+| Setting | Value |
+| --- | --- |
+| MCP endpoint | `https://mcp.vybebot.ai/mcp` |
+| OAuth service | `https://app.vybebot.ai` |
+
+## ChatGPT requirements
+
+Custom MCP apps use ChatGPT developer mode on the web. Full MCP support, including write actions, is currently documented for ChatGPT Business and Enterprise/Edu. Availability and admin controls can vary by plan and workspace policy. See [Developer mode and MCP apps in ChatGPT](https://help.openai.com/en/articles/12584461-developer-mode-apps-and-full-mcp-connectors-in-chatgpt-beta).
+
+## Connect VybeBot
+
+<Steps>
+  <Step title="Enable developer mode">
+    In ChatGPT, open **Settings → Apps → Advanced settings** and enable developer mode. A workspace administrator may need to allow custom apps first.
+  </Step>
+  <Step title="Create a custom app">
+    Open **Settings → Apps → Create**, or use **Workspace settings → Apps → Create** when configuring it for a team.
+  </Step>
+  <Step title="Enter the MCP endpoint">
+    Use `https://mcp.vybebot.ai/mcp` as the remote server endpoint, then scan its tools.
+  </Step>
+  <Step title="Authorize VybeBot">
+    Complete the VybeBot OAuth flow. Choose the workspace and approve only the scopes you want ChatGPT to use.
+  </Step>
+  <Step title="Use the app in a chat">
+    Add VybeBot from the ChatGPT app picker or mention it in your prompt. ChatGPT's app UI can vary by plan.
+  </Step>
+</Steps>
+
+The general ChatGPT app connection flow is documented in [Apps in ChatGPT](https://help.openai.com/en/articles/11487775-connectors-in).
+
+## Available capabilities
+
+Depending on server configuration and granted OAuth scopes, ChatGPT can:
+
+- List and inspect workspaces and projects.
+- Create a Discord, Telegram, or custom project.
+- Send a build prompt and follow live generation progress.
+- List files, read files, and inspect a generated diff.
+- Read deployment state, deploy a branch, or stop it.
+- Read or update workspace and project knowledge.
+
+Generation requests can target a branch and session or create a new session.
+
+## OAuth scopes
+
+| Scope | Access |
+| --- | --- |
+| `workspace.read` | List and inspect workspaces |
+| `workspace.write` | Update workspace knowledge |
+| `projects.read` | List and inspect projects and edits |
+| `projects.create` | Create projects |
+| `projects.write` | Update project knowledge |
+| `code.read` | List files, read files, and inspect diffs |
+| `generation.run` | Start and cancel generation |
+| `deployments.read` | Inspect deployments |
+| `deployments.write` | Deploy and stop branches |
+
+VybeBot still enforces workspace and project permissions after OAuth scope checks.
+
+## Safety and billing
+
+- Creating a project with an initial message and sending generation prompts consume AI credits.
+- Running a deployment consumes cloud credits.
+- ChatGPT must explicitly confirm a public deployment before the deploy tool proceeds.
+- MCP does not expose arbitrary direct file write or delete tools. Code changes go through the generation workflow.
+- Tool calls are auto-approved by default in the ChatGPT flow so a generation does not stall on an approval UI. Request manual prompt approval when you need it.
+
+## Troubleshoot the connection
+
+- If you cannot create an app, ask the ChatGPT workspace admin to review developer-mode and custom-app policy.
+- If OAuth reports missing access, reconnect and grant the required scope.
+- If only read-only tools appear, the VybeBot MCP builder tools may not be enabled for that deployment.
+- If a generation widget stops updating, ask for the generation status once as a fallback.
+- If VybeBot reports insufficient credits, top up the selected VybeBot workspace.
+
+<Warning>
+  Only connect MCP servers you trust. OpenAI notes that untrusted servers can increase prompt-injection and data-exposure risk.
+</Warning>

@@ -1,0 +1,52 @@
+---
+title: "System overview"
+description: "A high-level view of how VybeBot turns prompts into code and running deployments."
+icon: "network"
+---
+
+VybeBot combines a web workspace, an AI generation service, realtime collaboration, scheduled workers, and managed deployment infrastructure.
+
+```text
+Browser
+  └─ VybeBot web app
+       ├─ Project and workspace data → PostgreSQL
+       ├─ Generation request → Agent service → isolated code workspace
+       ├─ Live events and collaboration → realtime service and Redis
+       └─ Deploy request → managed host → bot process
+                                  ├─ runtime logs → log store
+                                  ├─ branch domain → HTTPS routing
+                                  └─ /app/data → optional persistent volume
+```
+
+## Main systems
+
+| System | Responsibility |
+| --- | --- |
+| Web application | Authentication, dashboard, Vyber UI, project settings, billing, and API boundary |
+| Agent service | Runs the Mastra-based coding workflow, tools, approvals, and generation streams |
+| Realtime service | Synchronizes live editor state, presence, and realtime browser events |
+| Worker service | Runs scheduled credit grants, usage accounting, retention cleanup, and reconciliation tasks |
+| Shared data layer | Stores accounts, workspaces, projects, branches, messages, billing records, and integrations in PostgreSQL |
+| Queue and event layer | Coordinates background work and live events through Redis-backed infrastructure |
+| Deployment layer | Builds and runs branch deployments on managed hosts |
+| Observability layer | Collects application logs and applies plan-based history retention |
+
+## Generation lifecycle
+
+1. The web app creates or loads a project branch and chat session.
+2. The agent service receives the prompt and relevant project context.
+3. The agent reads files, uses allowed tools, and writes changes in an isolated workspace.
+4. Realtime events update the browser with progress, tool activity, questions, and approvals.
+5. Completed file changes are synchronized back to the project and recorded for review.
+
+## Deployment lifecycle
+
+1. VybeBot validates the branch, token, environment, resource limits, and cloud balance.
+2. The deployment layer builds the current source and starts the bot process.
+3. The browser receives deployment stages and status updates.
+4. Runtime usage is metered against the workspace's cloud credits.
+5. Logs are sent to the observability layer and shown in the Vyber.
+
+<Info>
+  This page describes the customer-visible architecture. Host provisioning, database migrations, and service deployment procedures are maintained separately for VybeBot operators.
+</Info>

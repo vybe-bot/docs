@@ -1,0 +1,51 @@
+---
+title: "Workspaces"
+description: "Organize projects, members, billing, knowledge, connectors, skills, and GitHub access."
+icon: "building-2"
+---
+
+A workspace is the main ownership and billing boundary in VybeBot. Every project belongs to a workspace.
+
+## Personal workspace
+
+VybeBot creates a personal workspace when you first sign in. If no active workspace is selected, VybeBot falls back to that personal workspace.
+
+The personal workspace supports the same project model as other workspaces. You can create another workspace when you need separate members, billing, or shared configuration.
+
+## Create and switch workspaces
+
+Open the workspace switcher near the top of the sidebar.
+
+- Select an existing workspace to make it active.
+- Select **Create new workspace**, enter a name, and confirm.
+
+The active workspace controls the projects shown on the dashboard, both credit balances, available connections, shared skills, and plan limits.
+
+<Warning>
+  Plans and balances do not transfer between workspaces. Check the active workspace before buying credits, connecting an account, or creating a project.
+</Warning>
+
+## Workspace navigation
+
+The sidebar can show:
+
+- **Connectors** for app and chat connectors
+- **Skills** for shared and catalog skills
+- **Settings** for name, avatar, and shortcuts to integrations
+- **Knowledge** for shared agent context
+- **Team** for invitations, roles, permissions, and member credit limits
+- **Git** for GitHub App installations
+- **Billing** for plans, balances, usage, and payment management
+- **Audit logs** for eligible plans and members with access
+
+## Workspace settings
+
+Under **Settings**, workspace managers can update the display name and avatar. The slug is a stable identifier shown for reference.
+
+Changing a workspace name or avatar does not rename projects, Git repositories, domains, or deployed bots.
+
+## Audit logs
+
+Audit logs provide a searchable history of important workspace, project, member, integration, and billing activity. Access requires both an eligible paid plan and the `view_audit_logs` permission.
+
+Use the export action when you need an offline record. The audit log is not a substitute for application runtime logs; use [Logs and runtime diagnosis](/deploy/logs) for bot behavior.

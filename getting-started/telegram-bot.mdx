@@ -1,0 +1,41 @@
+---
+title: "Build a Telegram bot"
+description: "Create a bot with BotFather, generate its project, and deploy it."
+icon: "send"
+---
+
+Telegram projects support Node.js with `grammY` and Python with `python-telegram-bot`.
+
+## Create a Telegram bot
+
+<Steps>
+  <Step title="Open BotFather">
+    Open [@BotFather](https://t.me/BotFather) in Telegram and send `/newbot`.
+  </Step>
+  <Step title="Choose the names">
+    Follow BotFather's prompts. The username must end in `bot`, such as `AcmeSupportBot`.
+  </Step>
+  <Step title="Save the token">
+    BotFather returns an HTTP API token. Store it in a password manager until you add it to VybeBot.
+  </Step>
+</Steps>
+
+<Warning>
+  Anyone with the token can control the bot. Use BotFather to revoke it if it is exposed.
+</Warning>
+
+## Create and deploy the project
+
+1. On **Projects**, select **Telegram**.
+2. Describe the commands, messages, and behavior you want.
+3. In the Vyber, open **Settings → Secrets & Configs**.
+4. Save the token. Telegram projects receive it as `BOT_TOKEN`.
+5. Select **Deploy** and wait for the project to report **Running**.
+6. Open the bot's username in Telegram and send `/start` or one of your commands.
+
+## Troubleshoot the first run
+
+- If the bot does not reply, check **Deploy → App logs** for an invalid-token error.
+- If a command is missing, ask the agent to inspect command registration and deployment startup.
+- If the bot needs group messages, review its privacy mode with BotFather and enable only the access your use case needs.
+- If you rotate the token, save the new value in **Secrets & Configs**, then redeploy.

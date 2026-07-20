@@ -1,0 +1,68 @@
+---
+title: "Quickstart"
+description: "Create a project, generate your first bot, add its token, and deploy it."
+icon: "rocket"
+---
+
+This guide takes you from an account to a running bot. You need a GitHub, Google, or Discord account and a bot token for the platform you choose.
+
+<Steps>
+  <Step title="Sign in">
+    Open [VybeBot](https://vybebot.ai) and select **Get started**. Sign in with GitHub, Google, or Discord.
+
+    VybeBot creates a personal workspace the first time you sign in.
+  </Step>
+  <Step title="Describe your bot">
+    On **Projects**, describe one clear first version. For example:
+
+    ```text
+    Build a Discord bot with /ping and /help commands. Add a welcome message for new members and keep command handlers in separate files.
+    ```
+
+    Select Discord, Telegram, or Custom from the platform menu, then submit the prompt.
+  </Step>
+  <Step title="Wait for the first generation">
+    VybeBot creates a project, opens the Vyber, and sends your prompt to the agent. Follow its progress in chat.
+
+    If the agent asks a follow-up question or requests approval for a tool, answer it before generation can continue.
+  </Step>
+  <Step title="Review the result">
+    Open the changed files in **Code**. Use the change review to keep or undo individual AI changes. Check **Problems** for editor diagnostics.
+  </Step>
+  <Step title="Add the bot token">
+    Open **Settings → Secrets & Configs**. Save the platform token:
+
+    - Discord uses `DISCORD_TOKEN`. VybeBot derives `DISCORD_CLIENT_ID` from the token.
+    - Telegram uses `BOT_TOKEN`.
+    - Custom projects use `PLATFORM_TOKEN` by default.
+
+    Add any other environment variables your generated code expects.
+  </Step>
+  <Step title="Deploy">
+    Select **Deploy** in the project header. On the first deployment, confirm the token and choose CPU, memory, and disk values within your workspace plan.
+
+    Watch the deployment stages until the project reports **Running**.
+  </Step>
+  <Step title="Test and iterate">
+    Follow the first-deploy instructions shown by VybeBot. Invite a Discord bot to a server or message a Telegram bot, then return to chat with the result.
+
+    ```text
+    The /help response works, but new members do not receive a welcome message. Inspect the event registration and fix it.
+    ```
+  </Step>
+</Steps>
+
+<Check>
+  Your first bot is complete when the deployment is running and the platform responds to a command.
+</Check>
+
+## Next steps
+
+<Columns cols={2}>
+  <Card title="Prompt more effectively" icon="message-square" href="/build/prompting">
+    Give the agent testable requirements and useful context.
+  </Card>
+  <Card title="Read deployment logs" icon="scroll-text" href="/deploy/logs">
+    Diagnose startup and runtime problems.
+  </Card>
+</Columns>

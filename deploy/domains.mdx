@@ -1,0 +1,54 @@
+---
+title: "Branch domains"
+description: "Expose a deployed branch through a public HTTPS address for webhooks or HTTP APIs."
+icon: "globe"
+---
+
+A branch domain routes a public HTTPS hostname to a port in the selected branch's deployment. Use it for webhook receivers, health endpoints, or HTTP APIs.
+
+Branch domains are plan-dependent. Some plans provide a generated subdomain, while higher plans can allow a custom prefix under the VybeBot-managed root domain.
+
+## Configure a domain
+
+<Steps>
+  <Step title="Run the branch once">
+    Deploy the branch so VybeBot has a running cloud application to route.
+  </Step>
+  <Step title="Open domain settings">
+    In the Vyber, select **Settings → Domains**.
+  </Step>
+  <Step title="Choose the hostname">
+    Keep the generated prefix or enter a custom prefix when your plan allows it.
+  </Step>
+  <Step title="Enter the application port">
+    Enter the internal port where your process listens, such as `3000` or `5000`. The port must be between 1 and 65535.
+  </Step>
+  <Step title="Save and verify">
+    Saving the domain redeploys the branch. Wait for **Active**, then open the HTTPS URL.
+  </Step>
+</Steps>
+
+## Application requirements
+
+The process must listen on all interfaces rather than `localhost` only. A Node.js server commonly uses:
+
+```ts
+server.listen(Number(process.env.PORT ?? 3000), "0.0.0.0");
+```
+
+The configured branch-domain port must match the port used by the application.
+
+## Statuses
+
+- **Pending**: saved but not yet applied to a running deployment.
+- **Applying**: VybeBot is updating routing and deployment state.
+- **Active**: the hostname is routed.
+- **Failed**: routing could not be applied; review the displayed error and deployment logs.
+
+## Remove a domain
+
+Select **Remove** under **Settings → Domains**. You need deployment permission. Removing the route does not stop the underlying deployment.
+
+<Warning>
+  A branch domain is public. Add application-level authentication for sensitive endpoints and validate webhook signatures.
+</Warning>

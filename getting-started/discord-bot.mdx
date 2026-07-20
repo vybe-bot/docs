@@ -1,0 +1,54 @@
+---
+title: "Build a Discord bot"
+description: "Create Discord credentials, build a Discord project, and invite the deployed bot."
+icon: "discord"
+---
+
+Discord projects support Node.js with `discord.js` and Python with `discord.py`.
+
+## Create the Discord application
+
+<Steps>
+  <Step title="Create an application">
+    Open the [Discord Developer Portal](https://discord.com/developers/applications), select **New Application**, and give it a name.
+  </Step>
+  <Step title="Create the bot user">
+    Open **Bot** in the application settings and create the bot if Discord has not created one already.
+  </Step>
+  <Step title="Configure intents">
+    Enable only the privileged gateway intents your features require. A bot that reads ordinary message text commonly needs **Message Content Intent**. Member events commonly need **Server Members Intent**.
+  </Step>
+  <Step title="Copy the token">
+    Reset or copy the bot token from **Bot**. Store it temporarily in a password manager. Discord only shows a new token once.
+  </Step>
+</Steps>
+
+<Warning>
+  A Discord bot token grants control of the bot. Never put it in a prompt, source file, screenshot, or Git repository. Reset it immediately if it is exposed.
+</Warning>
+
+## Create and deploy the project
+
+1. On **Projects**, select **Discord**.
+2. Describe the first version of the bot and submit the prompt.
+3. In the Vyber, open **Settings → Secrets & Configs**.
+4. Save the token as the Discord bot token. VybeBot stores it as `DISCORD_TOKEN` and derives `DISCORD_CLIENT_ID`.
+5. Select **Deploy** and complete the first-deploy flow.
+
+After deployment, VybeBot shows an **Invite to Discord** link. Choose a server you manage and approve the requested permissions.
+
+<Note>
+  The generated invite currently requests administrator permissions. Review and reduce the bot's permissions in Discord when your use case allows it.
+</Note>
+
+## Test the bot
+
+Try a slash command in the server. If commands do not appear or the bot stays offline:
+
+- Confirm the deployment is **Running**.
+- Check **Deploy → App logs** for startup or authentication errors.
+- Confirm the saved token belongs to the same Discord application you invited.
+- Confirm required gateway intents are enabled.
+- Re-save the token after rotating it so VybeBot can refresh the client ID.
+
+See [Logs and troubleshooting](/deploy/logs) for a full diagnosis flow.

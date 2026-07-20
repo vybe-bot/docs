@@ -1,0 +1,71 @@
+---
+title: "Glossary"
+description: "Definitions for common VybeBot product and system terms."
+icon: "book-marked"
+---
+
+<AccordionGroup>
+  <Accordion title="Account">
+    Your VybeBot identity. An account can link GitHub, Google, and Discord sign-in providers and can belong to multiple workspaces.
+  </Accordion>
+  <Accordion title="AI change set">
+    A recorded group of files changed by one agent generation. You can review its diff and keep or undo individual files.
+  </Accordion>
+  <Accordion title="AI credits">
+    Workspace balance used for agent generation. AI credits are separate from cloud credits.
+  </Accordion>
+  <Accordion title="App connector">
+    A supported external-service connection that can provide managed runtime access to generated code. Google Sheets and Supabase are current examples.
+  </Accordion>
+  <Accordion title="Branch">
+    An isolated line of project code with its own chat sessions, connector links, deployment, domain, access, and persistent storage state.
+  </Accordion>
+  <Accordion title="Branch domain">
+    A public HTTPS hostname routed to a configured port on a deployed branch.
+  </Accordion>
+  <Accordion title="Chat connector">
+    A remote HTTP MCP server connected to the Vyber agent for generation-time tools. It is not automatically available to the deployed bot.
+  </Accordion>
+  <Accordion title="Chat session">
+    One conversation history between workspace members and the agent on a branch.
+  </Accordion>
+  <Accordion title="Cloud credits">
+    Workspace balance used for deployment CPU, memory, and disk. Cloud credits are separate from AI credits.
+  </Accordion>
+  <Accordion title="Commit">
+    A recorded project source snapshot in branch history that can be restored.
+  </Accordion>
+  <Accordion title="Deployment">
+    A built and running version of one project branch on VybeBot Cloud.
+  </Accordion>
+  <Accordion title="Explore">
+    VybeBot's public gallery for project profiles, stars, comments, invite links, and eligible remixes.
+  </Accordion>
+  <Accordion title="MCP">
+    Model Context Protocol, a standard used to expose tools and resources to AI clients such as the Vyber agent or ChatGPT.
+  </Accordion>
+  <Accordion title="Persistent storage">
+    A branch-specific durable volume mounted at `/app/data` across deployments.
+  </Accordion>
+  <Accordion title="Project">
+    One bot codebase in a workspace. A project has a fixed platform and can contain multiple branches and sessions.
+  </Accordion>
+  <Accordion title="Remix">
+    A new independent project copied from an Explore project's permitted branch.
+  </Accordion>
+  <Accordion title="Runtime profile">
+    The managed Node.js, Node.js with canvas, or Python environment used to build and run a project.
+  </Accordion>
+  <Accordion title="Skill">
+    A reusable `SKILL.md` instruction set that guides agent behavior at workspace or project scope.
+  </Accordion>
+  <Accordion title="Vyber">
+    The project builder interface containing chat, code, settings, deployment controls, logs, branches, and history.
+  </Accordion>
+  <Accordion title="VybeBot Cloud">
+    VybeBot's managed branch deployment and runtime environment.
+  </Accordion>
+  <Accordion title="Workspace">
+    The ownership boundary for projects, members, permissions, billing, credits, knowledge, skills, connectors, and GitHub connections.
+  </Accordion>
+</AccordionGroup>

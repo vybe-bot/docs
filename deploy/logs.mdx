@@ -1,0 +1,54 @@
+---
+title: "Logs and runtime diagnosis"
+description: "Use deployment output, live app logs, history, and editor problems to diagnose failures."
+icon: "scroll-text"
+---
+
+The Vyber separates build output from logs produced by the running bot.
+
+## Log sources
+
+| Source | Shows | Use it for |
+| --- | --- | --- |
+| Deploy output | Build and deployment stages | Dependency installation, build failures, host configuration |
+| App logs | Live stdout and stderr from the running process | Authentication errors, exceptions, command behavior |
+| Log history | Retained runtime logs within your plan window | Earlier incidents and restarts |
+| Problems | Editor diagnostics for project files | Syntax, type, and import issues before deployment |
+
+## Diagnose a failed deployment
+
+1. Open **Deploy → Status & Config**.
+2. Read the last failed deployment stage.
+3. Open **Deployment** output and find the first meaningful error.
+4. Fix missing dependencies, invalid scripts, or build errors in the project source.
+5. Redeploy.
+
+The last line is often a summary. The first stack trace or command failure usually identifies the cause.
+
+## Diagnose a running bot
+
+1. Confirm the deployment reports **Running**.
+2. Open **App** logs.
+3. Reproduce the command or event.
+4. Select the relevant lines and send them to chat as context.
+5. Ask the agent to explain the cause before changing broad areas of code.
+
+If the live stream disconnects, select **Reconnect**. A disconnected browser stream does not necessarily mean the bot stopped.
+
+## Log history and retention
+
+Open **Deploy → Log History** to load earlier runtime logs and choose a time range. Retention depends on the active workspace plan. Upgrading or downgrading changes the history window; it does not require a bot redeployment.
+
+<Note>
+  Logs can contain message content or third-party error details written by your code. Avoid logging tokens, authorization headers, or personal data.
+</Note>
+
+## Common patterns
+
+- **Invalid token or unauthorized**: replace the project token and redeploy.
+- **Module not found**: add the dependency to `package.json` or `requirements.txt`.
+- **Missing environment variable**: add the exact key under **Secrets & Configs**.
+- **Process exits immediately**: verify the start script and entry file.
+- **Bot is online but ignores events**: check platform permissions, Discord intents, or Telegram privacy settings.
+- **Out of memory**: inspect memory usage, reduce the workload, or select a larger allowed resource profile.
+- **No new logs**: confirm the selected branch is the deployed branch and reconnect the stream.

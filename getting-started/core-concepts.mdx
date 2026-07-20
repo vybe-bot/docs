@@ -1,0 +1,58 @@
+---
+title: "Core concepts"
+description: "Understand how VybeBot organizes people, code, AI work, and running bots."
+icon: "shapes"
+---
+
+VybeBot separates organization, source code, AI conversations, and running infrastructure. Knowing these boundaries makes collaboration and troubleshooting easier.
+
+## Organization model
+
+| Concept | What it contains | Important behavior |
+| --- | --- | --- |
+| Account | Your identity and linked sign-in providers | One account can join several workspaces |
+| Workspace | Members, billing, knowledge, connectors, skills, GitHub connections, and projects | Plan limits and both credit balances are workspace-specific |
+| Project | One bot codebase and its project settings | The platform cannot be changed after creation |
+| Branch | An isolated line of source, connector links, deployment state, domain, and persistent storage | Switching branches also switches the active project context |
+| Session | One conversation with the Vyber agent on a branch | Start a new session when you want a clean conversational thread |
+
+## Build model
+
+The Vyber agent works inside the selected project, branch, and session. It can inspect files, search code, edit source, use linked tools, and report a change set for review.
+
+Each completed generation can create a commit and an AI change set. You can inspect the diff, keep or undo individual files, or restore an earlier commit.
+
+<Info>
+  A chat session is not a Git branch. Sessions separate conversation history. Branches separate code and deployment state.
+</Info>
+
+## Runtime model
+
+A project is not live until you deploy a branch. Each branch can have its own deployment and runtime configuration.
+
+- **Source files** come from the project branch.
+- **Environment variables** provide secrets and runtime configuration.
+- **Deployment resources** set CPU, memory, and disk limits.
+- **Persistent storage** keeps files under `/app/data` across deployments when enabled.
+- **Branch domains** expose an HTTP port through a public HTTPS address when the plan supports them.
+
+Stopping a deployment stops cloud usage for that running process. It does not delete the project, branch, code, or retained persistent data.
+
+## Credit model
+
+VybeBot uses two independent balances:
+
+- **AI credits** pay for agent generation work.
+- **Cloud credits** pay for deployed CPU, memory, and disk usage.
+
+An AI generation can stop while the deployment keeps running, or a deployment can stop for low cloud balance while AI credits remain. See [Billing and credits](/workspace/billing-and-credits).
+
+## Connector model
+
+Do not treat all connectors as the same system:
+
+- **App connectors** give generated applications runtime access to supported services such as Google Sheets or Supabase.
+- **Chat connectors** connect remote HTTP MCP servers to the Vyber agent during generation. They are not bundled into the deployed bot.
+- **GitHub connections** link repositories and synchronize branches.
+
+See [App integrations](/configure/app-integrations), [MCP connectors](/configure/mcp-connectors), and [GitHub](/configure/github).

@@ -1,0 +1,73 @@
+---
+title: "Branches and chat sessions"
+description: "Use branches for isolated code and deployments, and sessions for separate agent conversations."
+icon: "git-branch"
+---
+
+Branches and chat sessions solve different problems. A branch isolates code and runtime state. A session isolates conversation history within that branch.
+
+## Work with branches
+
+Open the branch selector in the Vyber header.
+
+### Create a branch
+
+1. Select **New branch**.
+2. Enter a branch name.
+3. Choose the base branch to copy.
+4. Select **Create**.
+
+VybeBot switches to the new branch after creation.
+
+### Switch branches
+
+Select another branch from the list. VybeBot reloads that branch's files, sessions, integrations, deployment state, and settings.
+
+### Merge branches
+
+1. Select **Merge branches**.
+2. Choose the source branch.
+3. Choose a different target branch.
+4. Select **Merge**.
+
+VybeBot checks out the target and merges the source into it. If a Git synchronization conflict exists, open the conflict resolver from project Git settings.
+
+<Warning>
+  A merge changes the target branch. Confirm the source and target names before continuing.
+</Warning>
+
+## Branch-specific systems
+
+The following can differ by branch:
+
+- Source files and commits
+- Chat sessions and messages
+- Linked app and chat connectors
+- Deployment and selected host
+- Public branch domain
+- Persistent runtime storage
+- Collaborator access and public remix permission
+
+This isolation lets you test a feature without changing the default branch's running bot.
+
+## Work with chat sessions
+
+Use the session picker in chat to open earlier conversations or create a new session. A new session starts with clean conversational history but keeps the selected branch's files.
+
+Create a new session when:
+
+- You are starting an unrelated feature.
+- The current conversation contains assumptions that no longer apply.
+- You want a focused debugging thread.
+
+Continue the existing session when the new request depends on decisions or changes from the current conversation.
+
+## Control access
+
+Workspace access applies by default. In **Settings → Collaborators & Access**, members with permission can:
+
+- Restrict a branch to selected workspace members.
+- Grant or revoke branch access.
+- Add project-specific collaborators and override inherited permissions.
+
+Public remix access is separate. Configure it under **Settings → Explore & Remix**.

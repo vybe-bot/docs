@@ -1,0 +1,59 @@
+---
+title: "Skills"
+description: "Install or create reusable instructions that guide the Vyber agent."
+icon: "book-open"
+---
+
+A skill is a `SKILL.md` instruction set that gives the agent a repeatable workflow or specialized knowledge. Skills guide generation; they do not run inside the deployed bot.
+
+## Skill scopes
+
+| Scope | Applies to | Use it for |
+| --- | --- | --- |
+| Workspace | Projects across the active workspace | Shared conventions, domain rules, or organization-wide workflows |
+| Project | One project | Bot-specific architecture, commands, or release checks |
+
+If a project skill and workspace skill use the same identifier, the project skill acts as the local override.
+
+## Install from the catalog
+
+1. Open **Skills** from the workspace sidebar or the Vyber add menu.
+2. Search **Vybe catalog**.
+3. Open a skill and review its instructions.
+4. Select **Install on project** or **Install on workspace**.
+
+You need settings management permission for the selected scope.
+
+## Create a custom skill
+
+1. Open **Skills**.
+2. Select **Create** under **This project** or **Workspace shared**.
+3. Write valid `SKILL.md` content with frontmatter and instructions.
+4. Select **Create skill**.
+
+The frontmatter name becomes the identifier and cannot be renamed later.
+
+```mdx
+---
+name: discord-command-style
+description: Keep commands consistent across this project.
+---
+
+# Command rules
+
+- Put each slash command in `src/commands`.
+- Return ephemeral replies for permission errors.
+- Add a short usage example to `/help`.
+```
+
+## Use a skill in chat
+
+Installed skills are available to the agent. You can also mention a specific skill in the composer when you want to make the dependency explicit.
+
+<Tip>
+  Keep skills focused on stable, repeatable rules. Put a one-time feature request in the prompt instead.
+</Tip>
+
+## Update or remove a skill
+
+Open an installed skill to edit its `SKILL.md` or remove it. Updating a project skill also refreshes the project workspace. Removing a skill does not undo code that earlier generations created from it.

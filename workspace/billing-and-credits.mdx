@@ -1,0 +1,64 @@
+---
+title: "Billing and credits"
+description: "Understand workspace plans, AI credits, cloud credits, usage, and top-ups."
+icon: "credit-card"
+---
+
+Billing is scoped to one workspace. Upgrading a workspace does not upgrade your other workspaces.
+
+## Two credit balances
+
+| Balance | Pays for | Typical activity |
+| --- | --- | --- |
+| AI credits | Agent generation | Sending build prompts, code analysis, and tool-driven generation |
+| Cloud credits | Deployment runtime | CPU, memory, and disk while a branch deployment runs |
+
+The balances are independent. Buying AI credits does not keep a deployment running, and buying cloud credits does not fund generation.
+
+## Workspace plans
+
+Plans can control:
+
+- Project and member limits
+- Included and recurring AI credits
+- Included cloud credits
+- Deployment CPU, memory, and disk limits
+- GitHub synchronization
+- Branch domains and custom subdomains
+- Private Explore pages
+- Audit log access
+- Runtime log retention
+
+Open **Billing** in the workspace sidebar for current prices, limits, tax details, and available billing cycles. The live plan catalog is the source of truth.
+
+## AI credits
+
+AI credit grants can come from signup bonuses, daily grants, monthly or annual plans, and one-time top-ups. Some grant batches expire; the Billing page shows the workspace's current balance and usage history.
+
+One-time AI top-up credits do not expire under the current billing flow.
+
+Generation can stop with an insufficient-credit message. Add AI credits or wait for an eligible scheduled grant before retrying.
+
+## Cloud credits
+
+Cloud credits are deducted while deployments run. The rate depends on the host and selected CPU, RAM, and disk.
+
+The Billing page shows deployment usage, current hourly price, total spend, host, branch, and charge history. Stop unused deployments to stop future runtime charges.
+
+## Top-ups and automatic recharge
+
+Eligible paid workspaces can buy AI or cloud credits. Cloud auto-recharge can add a configured amount when the balance falls below a threshold. It requires an active subscription with a saved payment method.
+
+Review the threshold and amount carefully to avoid unexpected repeated charges.
+
+## Member limits
+
+Workspace managers can set a monthly AI-credit limit for individual members from **Team**. A member limit controls that person's generation usage; it does not reserve credits or create a separate balance.
+
+## Plan changes and cancellation
+
+Use the Billing page to preview plan changes before confirming them. The preview shows timing and pricing effects. Use the billing portal for payment methods, invoices, and subscription management when available.
+
+<Note>
+  Taxes can be added by the payment provider. Confirm the final checkout amount before purchase.
+</Note>

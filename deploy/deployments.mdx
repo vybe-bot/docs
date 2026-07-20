@@ -1,0 +1,63 @@
+---
+title: "Deployments"
+description: "Deploy a branch to VybeBot Cloud, choose resources, and manage its runtime."
+icon: "cloud-upload"
+---
+
+A deployment builds and runs the selected project branch on VybeBot Cloud. Deployments use cloud credits while they are running.
+
+## Prerequisites
+
+Before deploying, confirm that:
+
+- The branch contains a valid Node.js or Python project.
+- The platform token and required environment variables are saved.
+- Your role includes the `deploy` permission.
+- The workspace has enough cloud credits.
+- The requested CPU, memory, and disk fit the workspace plan.
+
+## First deployment
+
+<Steps>
+  <Step title="Open the deployment flow">
+    Select **Deploy** in the Vyber header or open the **Deploy** tab.
+  </Step>
+  <Step title="Confirm credentials">
+    Save the bot token if the project does not have one yet. Add any missing environment variables under project settings.
+  </Step>
+  <Step title="Choose a host and resources">
+    Select an available host region when more than one is offered. Set CPU percentage, RAM in MB, and disk in GB.
+
+    VybeBot shows the estimated hourly cloud-credit cost for the selection.
+  </Step>
+  <Step title="Start deployment">
+    Select **Deploy** and follow the build stages. The button remains unavailable when generation is still running or the resource values are invalid.
+  </Step>
+  <Step title="Complete the platform step">
+    After a successful first deployment, follow the invite or connection instructions for Discord, Telegram, or your custom platform.
+  </Step>
+</Steps>
+
+## Redeploy and stop
+
+- **Redeploy** rebuilds the current branch and replaces its running version.
+- **Stop** stops the process and its ongoing runtime charges.
+- Saving different resource values changes this branch's deployment configuration. Redeploy before the new limits take effect.
+
+Stopping does not delete the code, branch, logs already retained, or persistent volume.
+
+## Deployment status
+
+Common states include generating, building, deploying, running, stopped, and error. Use the deployment progress view for build stages and **App logs** for the running process.
+
+If a selected host is no longer available, choose another host and select **Migrate**. Branches with persistent storage use a protected migration flow so VybeBot does not silently start with an empty volume.
+
+## Resource usage and cost
+
+The deployment view reports live CPU and memory data when available. Runtime cost is based on the selected host's CPU, memory, and disk rates.
+
+Plan limits cap the maximum resources for one deployment. The live pricing and billing screens are the source of truth for current limits and rates.
+
+<Warning>
+  A successful build does not prove the bot works on its platform. Check the running status, test a real command, and inspect app logs.
+</Warning>

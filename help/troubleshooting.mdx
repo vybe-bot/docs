@@ -1,0 +1,97 @@
+---
+title: "Troubleshooting"
+description: "Resolve common account, generation, configuration, deployment, connector, and Git problems."
+icon: "wrench"
+---
+
+Start by identifying the failing layer: account, project creation, AI generation, build, running process, external platform, or connector.
+
+## Sign-in and account problems
+
+### The email already uses another provider
+
+Sign in with the provider named in the error. Open **Account Settings → Connected accounts**, then link the additional GitHub, Google, or Discord provider.
+
+Provider linking requires the same email address. If the provider uses a different email, update it with that provider or continue using the original sign-in method.
+
+### The wrong projects are shown
+
+Check the active workspace in the sidebar. Projects, plans, connections, and balances are scoped to that workspace.
+
+## Project creation problems
+
+### Project limit reached
+
+The workspace reached its plan's active project limit. Remove an unused project or upgrade the active workspace.
+
+### The wrong platform was selected
+
+The platform cannot be changed after project creation. Create a new project with the correct platform and reuse the prompt.
+
+## Generation problems
+
+### Generation stops without completing
+
+Check for a follow-up question, tool approval, AI-credit limit, or connection error in the latest assistant message. Reloading the project can restore a recent streaming or approval state.
+
+If the request is too broad, start a new chat session and ask for one smaller, testable change.
+
+### The agent changed too much
+
+Open the AI change review. Undo affected files or restore the last known-good commit, then send a narrower prompt that names the behavior to preserve.
+
+### A connector tool is unavailable
+
+Confirm the connection is active in the workspace and linked to the selected branch. For MCP, reconnect credentials with `needs_reauth`. For an app connector, confirm a resource is linked to the branch.
+
+## Deployment problems
+
+### Deployment button is disabled
+
+Wait for generation and stopping operations to finish. Confirm the branch has files, your role has `deploy`, and the resource values fit the plan.
+
+### Not enough cloud credits
+
+Open workspace **Billing**, add cloud credits, or stop another running deployment. AI credits cannot pay for hosting.
+
+### Build fails
+
+Open deployment output and find the first failed command. Common causes are a missing dependency, invalid start script, unsupported native package, or runtime profile mismatch.
+
+### Deployment runs but the bot is offline
+
+Open **App logs**. Verify the token, external platform intents or privacy settings, start script, and environment variables. Re-save a rotated token and redeploy.
+
+## Git problems
+
+### No GitHub connection is available
+
+Connect the GitHub App under workspace **Git** first. Git synchronization also requires a paid workspace plan.
+
+### Repository permission denied
+
+Review the GitHub App installation and grant access to the target organization or repository. Reconnect the workspace connection afterward.
+
+### Branch conflict detected
+
+Open **Settings → Git → Open Resolver**. Review local and remote differences before choosing a result, then run synchronization again.
+
+## Domain and storage problems
+
+### Domain stays pending
+
+Deploy the branch once, verify the configured port, and make sure the process listens on `0.0.0.0`. Saving domain changes triggers a redeployment.
+
+### Persistent files disappear
+
+Confirm the code writes under `/app/data` or `PERSISTENT_DATA_DIR`. Files elsewhere remain part of the container and can be replaced on redeployment.
+
+## Get help
+
+Open **Help & Support** in the VybeBot sidebar to:
+
+- Send feedback.
+- Report a bug with project and branch context.
+- Join the [VybeBot Discord server](https://discord.gg/6BdB22Rc97).
+
+Include the workspace, project, branch, approximate time, and relevant logs. Never include tokens or secret values.

@@ -1,0 +1,67 @@
+---
+title: "Team and permissions"
+description: "Invite workspace members and control workspace, project, and branch access."
+icon: "users"
+---
+
+VybeBot applies access at three levels: workspace permissions, project overrides, and branch restrictions.
+
+## Invite a member
+
+1. Open **Team** in the workspace sidebar.
+2. Enter the member's email address.
+3. Choose **Member** or **Admin** when your role allows it.
+4. Send the invitation and share the invitation link if needed.
+
+The recipient signs in and accepts the invitation. Workspace seat limits depend on the active plan. Pending invitations can be revoked.
+
+## Default workspace roles
+
+| Role | Default access |
+| --- | --- |
+| Owner | All workspace permissions, including billing and member management |
+| Admin | Projects, code, deployments, settings, members, and audit logs; billing is not granted by default |
+| Member | Read projects, edit code, and deploy |
+
+Owners can promote members to admin. Admins can manage ordinary members but cannot change the owner.
+
+## Workspace permissions
+
+Workspace access can be customized per member:
+
+| Permission | Allows |
+| --- | --- |
+| Read projects | Open projects and view project data |
+| Edit code | Change files and branches and run AI-assisted sessions |
+| Deploy | Start, stop, and inspect deployments |
+| Manage settings | Change project settings, secrets, and configuration |
+| Manage billing | Change plans and billing settings |
+| Manage members | Invite members and edit their access |
+| View audit logs | Read workspace change history |
+
+You cannot grant a permission you do not hold yourself.
+
+## Project overrides
+
+Workspace managers can apply an override for one project. The default project roles are:
+
+- **Editor**: view, edit code, deploy, manage settings, and manage collaborators.
+- **Viewer**: view the project only.
+
+You can customize the individual project permissions after choosing a role preset. An override with no permissions removes that member's access to the project.
+
+## Project collaborators
+
+Project managers can add workspace members under **Settings → Collaborators & Access** and assign project-specific roles or permissions. This is useful when a member should not inherit the same access across every project.
+
+## Branch restrictions
+
+Each branch can allow all workspace members or a selected member list. Branch restrictions are useful for private experiments, sensitive integrations, or release branches.
+
+Branch access does not change public Explore visibility. Configure public remixing separately under **Explore & Remix**.
+
+## Member AI credit limits
+
+Members with billing or member management access can set a monthly AI-credit limit for another member. The Team page shows usage against that limit.
+
+Disabling a member limit lets the member use the workspace's available AI balance, subject to their other permissions.

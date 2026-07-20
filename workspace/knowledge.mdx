@@ -1,0 +1,46 @@
+---
+title: "Workspace knowledge"
+description: "Give the Vyber agent shared context that should apply across workspace projects."
+icon: "brain"
+---
+
+Workspace knowledge is shared context the Vyber agent can use in every project in the active workspace.
+
+Use it for stable information such as:
+
+- Product terminology and tone
+- Supported regions, currencies, or languages
+- Organization-wide security rules
+- Shared API conventions
+- Behaviors every bot must preserve
+- Links or identifiers that do not contain secrets
+
+## Add shared knowledge
+
+1. Open **Knowledge** in the workspace sidebar.
+2. Enter concise instructions and facts.
+3. Select **Save**.
+
+```text
+Our support team calls a customer request a ticket.
+All user-facing timestamps must be displayed in UTC.
+Never send private account data to a public Discord channel.
+Use the shared error code format VB-<category>-<number>.
+```
+
+## What not to store
+
+Do not put passwords, tokens, OAuth credentials, private keys, or customer records in workspace knowledge. Use [Secrets and runtime](/configure/secrets-and-runtime) or a connector with appropriate access controls.
+
+## Knowledge versus skills
+
+- Use **knowledge** for concise facts and standing context.
+- Use a **skill** for a structured workflow, detailed rules, or reusable procedures.
+- Use a **prompt** for the goal of the current task.
+- Use an **MCP connector** for live data from another system.
+
+See [Skills](/build/skills) and [MCP connectors](/configure/mcp-connectors).
+
+## Keep it current
+
+Shared knowledge can influence new generations across the workspace. Remove outdated rules as soon as they stop being true, and avoid duplicating project-specific details that belong in a project skill or prompt.

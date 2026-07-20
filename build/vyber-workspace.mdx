@@ -1,0 +1,67 @@
+---
+title: "The Vyber workspace"
+description: "Learn the chat, code, project, deployment, and mobile areas of the Vyber."
+icon: "panels-top-left"
+---
+
+The Vyber is the project workspace where you build and operate a bot. It keeps the agent conversation beside the selected branch's code and runtime state.
+
+## Header controls
+
+The header shows the project name, platform, branch, and current status. From it you can:
+
+- Switch, create, or merge branches.
+- Move between **Code**, **Overview**, **Settings**, and **Deploy** when your permissions allow it.
+- Open commit history and restore an earlier commit.
+- Deploy, redeploy, or stop the selected branch.
+
+## Chat panel
+
+Use chat to ask the agent to inspect, explain, or change the project. A response can include progress updates, file operations, tool calls, follow-up questions, and approvals.
+
+The composer supports:
+
+- Image attachments from a file picker or clipboard.
+- Context mentions for files, connectors, skills, and selected terminal output.
+- New chat sessions on the current branch.
+- A stop action while generation is running.
+
+<Tip>
+  Mention the exact file or log selection when the problem is localized. Focused context reduces guesswork and helps the agent make smaller changes.
+</Tip>
+
+## Code tab
+
+The code area contains a file explorer and editor. Select a file to inspect it, or send its path to chat as context.
+
+Direct editor access depends on your workspace plan and your `write_code` permission. When you can edit directly, save your changes before switching branches.
+
+The output panel can show:
+
+- **Deploy** progress and build output
+- **App** logs from the running process
+- **Problems** reported by the editor
+
+## Overview tab
+
+**Overview** summarizes the project, recent sessions, status, and current runtime resource usage. Use it for orientation before making a change.
+
+## Settings tab
+
+Project settings are permission-aware and can include:
+
+- **General**: name, description, platform, and runtime
+- **Explore & Remix**: public profile, visibility, and branch remix access
+- **Secrets & Configs**: platform token, environment variables, and runtime profile
+- **Git**: repository connection and branch synchronization
+- **Storage**: branch persistent storage
+- **Collaborators & Access**: project and branch permissions
+- **Domains**: public HTTPS routing for a deployed branch
+
+## Deploy tab
+
+Use **Deploy** to choose resources, start or stop the branch, inspect deployment history, view logs, and monitor CPU or memory. See [Deployments](/deploy/deployments).
+
+## Mobile layout
+
+On smaller screens, the same tools appear under **Chat**, **Code**, **Project**, and **Logs**. **Project** contains the overview, settings, and deployment views that are separate tabs on desktop.

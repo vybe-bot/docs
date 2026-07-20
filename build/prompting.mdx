@@ -1,0 +1,74 @@
+---
+title: "Prompt the agent"
+description: "Write clear requests, provide focused context, and verify AI-generated changes."
+icon: "message-square-text"
+---
+
+The Vyber agent can inspect and modify the selected branch. Give it a goal, observable behavior, and constraints it can verify.
+
+## A useful prompt structure
+
+Include four parts when they matter:
+
+1. **Goal**: what the bot should do.
+2. **Trigger**: the command, event, message, or schedule that starts it.
+3. **Result**: what a user should see or what data should change.
+4. **Constraints**: permissions, libraries, file structure, error handling, or behavior to preserve.
+
+```text
+Add a /ticket close command. Only the ticket creator or a member with the Support role can use it. Confirm before closing, archive the transcript, and keep the current /ticket open behavior unchanged.
+```
+
+## Start small
+
+Ask for one testable slice before a broad rewrite. A sequence such as the following is easier to review:
+
+1. Add the command and validation.
+2. Handle permission errors.
+3. Add persistence through the linked integration.
+4. Improve response formatting.
+
+## Give context
+
+Use the add menu or mention palette to attach relevant context:
+
+- Mention a file when you know where the behavior lives.
+- Select log lines and send them to chat for a runtime error.
+- Mention a linked connector when the agent should use an external tool.
+- Mention a skill when a project has specialized instructions.
+- Attach an image when the desired behavior depends on a visual reference.
+
+Do not paste tokens or API keys into the prompt. Add them in [Secrets and runtime](/configure/secrets-and-runtime).
+
+## Ask for investigation first
+
+If the cause is unclear, separate diagnosis from implementation:
+
+```text
+The bot restarts whenever a user uploads a large file. Inspect the relevant handler and app logs. Explain the cause before changing code.
+```
+
+You can then approve a specific fix with the evidence in view.
+
+## Review tool requests
+
+Some tools can affect files, integrations, databases, or deployments. When the agent pauses for approval:
+
+- Read the tool name and proposed input.
+- Confirm the target project, branch, and external resource.
+- Reject the action if the scope is broader than your request.
+
+## Verify every generation
+
+After the agent finishes:
+
+1. Review the change set and file diffs.
+2. Keep or undo changes at the file level when needed.
+3. Check editor problems.
+4. Deploy or redeploy the branch.
+5. Test the behavior on Discord, Telegram, or the target platform.
+6. Use runtime logs for failures that only appear after startup.
+
+<Warning>
+  Generated code can call external APIs and act with the permissions of your bot token or connected service. Review permissions and destructive operations before deployment.
+</Warning>

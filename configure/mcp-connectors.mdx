@@ -1,0 +1,62 @@
+---
+title: "MCP connectors"
+description: "Give the Vyber agent generation-time access to remote tools and knowledge."
+icon: "messages-square"
+---
+
+Chat connectors attach remote Model Context Protocol (MCP) servers to the Vyber agent. They help the agent read or act on tools while it builds your project.
+
+<Warning>
+  Chat connectors are not included in the deployed bot. Use an app connector or a normal API integration when the running bot needs runtime access.
+</Warning>
+
+## Supported server type
+
+VybeBot supports remote MCP servers over HTTP. Local `stdio` servers are not supported.
+
+An MCP server can allow one of these authentication modes:
+
+- No authentication
+- Bearer token
+- API key header
+- OAuth
+
+Credentials are encrypted and are not displayed again after saving.
+
+## Add a custom server
+
+<Steps>
+  <Step title="Open chat connectors">
+    Open **Connectors** in the workspace sidebar and select **Chat connectors**.
+  </Step>
+  <Step title="Create the server entry">
+    Select **New MCP server**. Enter a name, an HTTPS MCP endpoint, and the allowed authentication mode.
+  </Step>
+  <Step title="Connect your identity">
+    Select **Connect as me** and provide the required credential or complete OAuth.
+  </Step>
+  <Step title="Link it to a branch">
+    Open the project branch, return to **Connectors**, and select **Use in branch** for your active connection.
+  </Step>
+  <Step title="Use it in chat">
+    Mention the connector or describe the external context the agent should retrieve.
+  </Step>
+</Steps>
+
+## Connection scope
+
+The workspace stores the server definition and your connection. Each branch separately controls whether that connection is linked for generation.
+
+This means two branches can use different MCP connections without changing each other's agent tools.
+
+## Safe use
+
+- Use the narrowest credential scopes the server supports.
+- Review tool calls that write to external systems.
+- Disconnect a credential that is no longer needed.
+- Reconnect when the status reports `needs_reauth`.
+- Do not connect an untrusted server. It can return instructions and data to the agent.
+
+<Tip>
+  Add stable company guidance to [Workspace knowledge](/workspace/knowledge). Use MCP when the agent needs live or structured data from another system.
+</Tip>

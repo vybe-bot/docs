@@ -1,0 +1,54 @@
+---
+title: "GitHub repositories"
+description: "Connect a GitHub App installation, link a repository, and synchronize project branches."
+icon: "github"
+---
+
+GitHub synchronization uses a workspace GitHub App connection and a project repository link. Git features are available on paid workspace plans.
+
+## Connect GitHub to a workspace
+
+1. Open **Git** in the workspace sidebar.
+2. Select **Connect GitHub**.
+3. Install or authorize the VybeBot GitHub App for the account or organization.
+4. Return to VybeBot and confirm the connection is active.
+
+One workspace can hold multiple GitHub App installations. Project managers choose the connection when linking a repository.
+
+## Link a project
+
+Open **Settings → Git** in the project. Choose one mode:
+
+- **Create new repository** creates a public or private repository under the selected owner and links it.
+- **Link existing repository** connects a repository the GitHub App can access.
+
+After linking, publish the active VybeBot branch to create or associate its remote branch.
+
+## Publish and sync branches
+
+- **Publish Branch** sends an unpublished VybeBot branch to GitHub.
+- **Sync Branch** reconciles changes between the linked local and remote branch.
+- **Reconnect** restores a previously disconnected project link when access is still valid.
+- **Disconnect** removes the active project link without deleting the GitHub repository.
+
+The project Git panel shows local and remote commit IDs, the remote branch, last sync time, and synchronization status.
+
+## Resolve conflicts
+
+A conflict occurs when local and remote history diverge in a way VybeBot cannot reconcile automatically.
+
+1. Open **Settings → Git**.
+2. Find **Branch conflict detected**.
+3. Select **Open Resolver**.
+4. Review differing files or choose the intended branch-level result.
+5. Synchronize again.
+
+<Warning>
+  Confirm the selected branch before publishing or resolving a conflict. Git actions affect the linked remote repository.
+</Warning>
+
+## Permissions and access
+
+You need project settings or Git management access to link repositories, publish branches, or run synchronization. The GitHub App must also have access to the target organization and repository.
+
+If a repository reports `permission_denied`, `repo_missing`, or `reconnect_required`, review the workspace installation before changing project code.

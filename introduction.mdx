@@ -1,5 +1,50 @@
 ---
-title: "Introduction"
+title: "Welcome to VybeBot"
+description: "Build, improve, deploy, and manage Discord, Telegram, and custom bots with an AI coding agent."
+icon: "bot"
 ---
 
-Hi! VybeBot!
+VybeBot turns a plain-language idea into a working bot project. You can ask the Vyber agent to write code, review every file it changes, connect external services, and deploy the result to VybeBot Cloud.
+
+You do not need to start with an existing repository. VybeBot creates a runnable project for the platform you choose. Developers can still edit the generated source, use branches, connect GitHub, and inspect runtime logs.
+
+<Columns cols={2}>
+  <Card title="Build your first bot" icon="rocket" href="/getting-started/quickstart">
+    Go from a prompt to a deployed bot.
+  </Card>
+  <Card title="Learn the core concepts" icon="shapes" href="/getting-started/core-concepts">
+    Understand workspaces, projects, branches, sessions, and deployments.
+  </Card>
+  <Card title="Use the Vyber" icon="code" href="/build/vyber-workspace">
+    Work with chat, code, settings, deployment controls, and logs.
+  </Card>
+  <Card title="Connect other services" icon="plug" href="/configure/app-integrations">
+    Add runtime integrations or generation-time MCP tools.
+  </Card>
+</Columns>
+
+## What you can build
+
+VybeBot includes templates and platform guidance for:
+
+- **Discord bots** built with `discord.js` or `discord.py`
+- **Telegram bots** built with `grammY` or `python-telegram-bot`
+- **Custom long-running processes** that connect to another platform or protocol
+
+The available platform list is managed by VybeBot. Your workspace may show a different set if an administrator changes the active platforms.
+
+## The usual workflow
+
+```text
+Describe your bot → Review generated code → Add credentials → Test and refine → Deploy → Monitor
+```
+
+Your AI work consumes AI credits. Running a deployment consumes cloud credits. Both balances belong to the active workspace. See [Billing and credits](/workspace/billing-and-credits) for the distinction.
+
+<Note>
+  VybeBot stores your bot token and other secret values as protected configuration. Never paste secrets into a chat prompt or commit them to project files.
+</Note>
+
+## Where to go next
+
+Start with the [quickstart](/getting-started/quickstart). If you already created a project, open [The Vyber workspace](/build/vyber-workspace) to learn the interface.

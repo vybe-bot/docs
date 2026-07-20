@@ -1,0 +1,57 @@
+---
+title: "Explore and remix"
+description: "Publish a project profile, share a bot, and create independent working copies."
+icon: "compass"
+---
+
+Explore is VybeBot's public project gallery. A project page can show its name, description, artwork, platform, creator, invite link, stars, comments, and remix options.
+
+## Configure the Explore profile
+
+Open **Settings → Explore & Remix** in the project.
+
+You can set:
+
+- Project display name and description
+- Square icon and wide banner
+- Bot invite URL
+- Public or private Explore visibility
+- Public remix access for each branch
+
+The Explore profile is separate from the bot's deployment. A project page can exist when its deployment is stopped, and an invite link can fail if the external bot is unavailable.
+
+## Visibility
+
+Public projects appear in Explore and have a shareable page. Project source remains private by default unless you explicitly enable a public source or remix option.
+
+Free projects are always public under the current plan rules. Paid workspace plans can make a project Explore page private.
+
+<Warning>
+  Review the project profile and generated source for personal data, internal URLs, and secrets before making it public.
+</Warning>
+
+## Enable remixing
+
+Branches are not remixable until a project manager enables **Public remixing** for that branch.
+
+When a visitor remixes a project, they:
+
+1. Choose one of the permitted source branches.
+2. Choose a destination workspace.
+3. Choose private or public-source visibility for the working copy.
+4. Receive a new, independent project and branch.
+
+The remix does not share deployment credentials, private connector credentials, billing, or persistent runtime files from the source project.
+
+## Community actions
+
+Signed-in users can star a project, comment, reply to comments, and create a remix when an eligible branch exists. Project owners can add an invite URL so visitors can open the deployed bot's platform invitation.
+
+## Good publishing checklist
+
+- Use a clear project name and short description.
+- Add an icon and a 3:1 banner.
+- Test the invite URL in a signed-out browser.
+- Remove secrets and internal-only information from source and profile text.
+- Enable remixing only on a branch that is safe to copy.
+- Keep the linked deployment running if visitors need to try the bot.

@@ -1,0 +1,58 @@
+---
+title: "Files, changes, and history"
+description: "Review project files, AI change sets, commits, and restore points."
+icon: "files"
+---
+
+VybeBot keeps project source in a branch-aware workspace. The file editor, AI change review, and commit history provide different levels of control.
+
+## Browse and edit files
+
+Open **Code** and select a file in the explorer. The editor chooses a likely entry file when a project first loads, such as `src/index.ts` or `src/main.py`.
+
+When direct editing is available for your plan and role:
+
+1. Change the file in the editor.
+2. Review the **Problems** panel.
+3. Select **Save**.
+
+Unsaved editor changes are local to the current browser view until saved. Save before changing branches or restoring history.
+
+## Review AI changes
+
+The agent records changed files in an AI change set. Open its review view to compare the previous and proposed versions.
+
+- **Keep file** accepts the current generated version.
+- **Undo file** returns that file to its previous content.
+- A conflict indicator means the file changed again after the change set was created. Review the current source before choosing an action.
+
+Use file-level actions when most of a generation is correct but one part should be discarded.
+
+## Commit history
+
+Open the history control in the project header to see project commits. Each entry shows its message, timestamp, and number of changed files.
+
+Restoring a commit replaces the branch workspace with that historical snapshot. It does not restore external service state, database rows, deployed persistent files, or third-party configuration.
+
+<Warning>
+  Review unsaved work before restoring a commit. A restore changes the current branch's source snapshot.
+</Warning>
+
+## Source code and runtime data
+
+Project files and persistent runtime files are separate:
+
+- Source code, dependencies, and build output come from the branch and optional Git repository.
+- Files your bot must retain at runtime belong under `/app/data` when persistent storage is enabled.
+
+Do not use persistent storage as a source-code backup. See [Persistent storage](/deploy/persistent-storage).
+
+## A safe recovery sequence
+
+When a generation introduces a regression:
+
+1. Stop further generation on the branch.
+2. Inspect the AI change set.
+3. Undo only the affected files if the change is isolated.
+4. Restore the last known-good commit if the change is broad.
+5. Redeploy and verify the runtime logs.

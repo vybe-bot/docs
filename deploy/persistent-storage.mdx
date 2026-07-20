@@ -1,0 +1,59 @@
+---
+title: "Persistent storage"
+description: "Keep branch runtime files across redeployments and manage them safely."
+icon: "database"
+---
+
+Persistent storage gives one branch a durable volume mounted at `/app/data`. Files under that path remain available across normal redeployments on VybeBot Cloud.
+
+The feature must be enabled by the VybeBot platform administrator before it appears in project settings.
+
+## What belongs in persistent storage
+
+Use `/app/data` for runtime-created files that must survive a restart, such as:
+
+- Small SQLite databases
+- Generated exports or media
+- Local caches that are expensive to rebuild
+- Bot state stored as files
+
+Do not store source code, dependencies, Dockerfiles, or build output there. Those remain branch and Git driven.
+
+## Enable storage
+
+1. Select the intended project branch.
+2. Open **Settings → Storage**.
+3. Turn on **Runtime data**.
+4. Deploy or redeploy the branch.
+
+Enabled deployments receive `PERSISTENT_DATA_DIR=/app/data` in addition to the mounted path. Prefer reading that variable in generated code.
+
+```ts
+const dataDirectory = process.env.PERSISTENT_DATA_DIR ?? "/app/data";
+```
+
+## Manage files
+
+When storage reports **Ready**, select **Open files** to create folders, upload or edit files, and remove entries. File access is private and proxied through VybeBot.
+
+If two edits race, checksum protection can reject the later write. Reload the current content before trying again.
+
+## Disable or delete data
+
+Turning storage off schedules the volume to detach on the next successful deployment. Existing data is retained.
+
+**Delete all files** permanently clears the current contents of `/app/data` after an exact confirmation phrase. Existing cloud backups, when configured, follow the platform's retention policy.
+
+<Warning>
+  Deleting all files is destructive. Download or otherwise back up important application data first.
+</Warning>
+
+## Moving to another host
+
+When persistent data exists, changing the deployment host requires a migration. VybeBot stops writes, snapshots the volume, restores it on the target, deploys the branch, verifies health, and then moves routing.
+
+If migration fails, VybeBot attempts to restart the source deployment. Follow any `needs_intervention` message instead of starting a clean deployment on another host.
+
+## Persistent storage versus Supabase
+
+Use persistent storage for files owned by one branch. Use [Supabase](/configure/app-integrations) for relational data, shared access, database policies, and managed queries.
