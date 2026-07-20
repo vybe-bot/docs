@@ -70,8 +70,7 @@
         "group": "Share and extend",
         "pages": [
           "share/explore-and-remix",
-          "advanced/chatgpt-mcp",
-          "concepts/system-overview"
+          "advanced/chatgpt-mcp"
         ]
       },
       {

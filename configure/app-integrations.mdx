@@ -38,20 +38,11 @@ Use Google Sheets for small operational datasets, queues, reports, or configurat
 
 ## Supabase
 
-A Supabase connection can link an existing project or create a new database project in an authorized organization. VybeBot can prepare the client, manage connection variables, generate TypeScript types, and create SQL migration files.
-
-Database migrations have an explicit review flow:
-
-1. The agent generates a migration under `supabase/migrations`.
-2. VybeBot records it as pending.
-3. You review the SQL and approve its application.
-4. Destructive changes require explicit confirmation.
-
-Applied migrations are external database state. Undoing a source file or restoring a project commit does not roll the database back. Create a new rollback migration instead.
+A Supabase connection can link an existing project or create a new database project in an authorized organization. VybeBot can prepare the client, manage connection variables, generate TypeScript types, and create SQL migration files and finally integrate the DB to the bot systems.
 
 ## Security and scope
 
-- Workspace OAuth tokens are stored as protected connection data.
+- Workspace OAuth credentials are stored as protected connection data.
 - Branch links control which resource the project uses.
 - Managed runtime keys can be revoked or refreshed without exposing the underlying OAuth token.
 - Integration activity is recorded for auditing.
