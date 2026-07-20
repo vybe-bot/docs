@@ -121,5 +121,8 @@
   "appearance": {
     "default": "dark",
     "strict": true
+  },
+  "icons": {
+    "library": "lucide"
   }
 }
